@@ -5,12 +5,12 @@ class DevTools extends HTMLElement {
   input = {}
   output = {}
   property = {}
+  static observedAttributes = ["mobile"];
   constructor() {
     super()
     const shadow = this.attachShadow({ mode: "closed" })
     shadow.innerHTML = html` <link rel="stylesheet" type="text/css" href="./styles.css" /> `
-    
-    // if (navigator.maxTouchPoints && navigator.maxTouchPoints > 2) {
+    if (this.hasAttribute("mobile") && navigator.maxTouchPoints && navigator.maxTouchPoints > 2) {
       import("//cdn.jsdelivr.net/npm/eruda").then(() => {
         eruda.init({
           default: {
@@ -29,11 +29,11 @@ class DevTools extends HTMLElement {
           }, 300)
         })
       })
-    // }
+    }
   }
   connectedCallback() { }
   attributeChangedCallback(attrName, oldValue, newValue) {
-    console.log(attrName)
+    // console.log(attrName)
   }
 }
 customElements.define("dev-tools", DevTools)
