@@ -1,7 +1,7 @@
 const html = String.raw
 
-class DevTools extends HTMLElement {
-  name = "DevTools"
+class Component extends HTMLElement {
+  name = { ru: "DevTools" }
   input = {}
   output = {}
   property = {}
@@ -38,4 +38,4 @@ class DevTools extends HTMLElement {
   connectedCallback() { }
   attributeChangedCallback(attrName, oldValue, newValue) { }
 }
-customElements.define("dev-tools", DevTools)
+customElements.define("dev-tools", Component)
